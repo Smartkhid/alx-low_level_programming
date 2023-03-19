@@ -1,10 +1,10 @@
 #include <stdio.h>
 /**
- * This program is to help us get the sizes of all the type of varible data types
+ *main - Entry point
  *
- * Return: Always 0 (This means successful)
+ *Description: This program is to help us get the sizes of all the type of varible data types
  *
- *
+ *Return: Always 0 (This means successful)
  */
 
 int main(void)
