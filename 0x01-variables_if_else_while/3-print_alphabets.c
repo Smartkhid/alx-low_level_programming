@@ -15,13 +15,13 @@ int main(void)
 	a = 2;
 	b = 4;
 
-	while (a < 12)
+	while (a < 29)
 	{
 		putchar(a);
 		a++;
 	}
 
-	while (b < 20)
+	while (b < 30)
 	{
 		putchar(b);
 		b++;
