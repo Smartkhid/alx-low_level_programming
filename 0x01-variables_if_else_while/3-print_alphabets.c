@@ -10,21 +10,21 @@
 
 int main(void)
 {
-	int a, b;
+	int i, j;
 
-	a = 2;
-	b = 4;
+	i = 97;
+	j = 65;
 
-	while (a < 29)
+	while (i < 123)
 	{
-		putchar(a);
-		a++;
+		putchar(i);
+		i++;
 	}
 
-	while (b < 30)
+	while (j < 91)
 	{
-		putchar(b);
-		b++;
+		putchar(j);
+		j++;
 	}
 
 	putchar(10);
