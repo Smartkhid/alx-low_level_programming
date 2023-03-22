@@ -8,7 +8,8 @@
 
 int main(void)
 {
-	unsigned long long i, num1 = 1, num2 = 2, next;
+	int i;
+	unsigned long long num1 = 1, num2 = 2, next;
 
     	printf("%d, %d, ", num1, num2);
 
