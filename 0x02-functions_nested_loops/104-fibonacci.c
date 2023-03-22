@@ -8,14 +8,15 @@
 
 int main(void)
 {
-	unsigned int i, num1 = 1, num2 = 2, next;
+	int i;
+	unsigned int num1 = 1, num2 = 2, next;
 
-	printf("%d, %d, ", num1, num2);
+	printf("%u, %u, ", num1, num2);
 	for (i = 2; i < 98; i++)
 	{
 		next = num1 + num2;
-		printf("%d", next);
-		if (i < 97)
+		printf("%u", next);
+		if (i > 0 && i < 97)
 		{
 			printf(", ");
 		}
