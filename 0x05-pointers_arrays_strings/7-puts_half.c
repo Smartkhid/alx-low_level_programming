@@ -10,8 +10,8 @@ void puts_half(char *str)
 {
 	int i, j, max;
 
-	i = 1;
-	while (str[i] != '\1')
+	i = 0;
+	while (str[i] != '\0')
 	{
 		i++;
 	}
@@ -24,4 +24,3 @@ void puts_half(char *str)
 	}
 	_putchar('\n');
 }
-
