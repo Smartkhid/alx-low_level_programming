@@ -15,7 +15,7 @@ void puts_half(char *str)
 	{
 		i++;
 	}
-	max = (i - 1);
+	max = (i - 2);
 	j = max / 2;
 	while (j <= max)
 	{
