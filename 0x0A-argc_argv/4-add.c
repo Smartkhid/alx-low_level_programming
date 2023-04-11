@@ -1,41 +1,66 @@
+#include "main.h"
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
-#include <string.h>
+
 /**
- * checker - checks for valid input
- * @argc: argument count
- * @i: counter for argv[]
- * @j: counter for argv[][]
- * @argv: argument vector
- * Return: 0 on success, 1 on failure
+ * is_number - checks to see if input is a number
+ * @s: input to check for numberhood
+ * Return: 1 if it is a number, 0 if not
  */
-int checker(int argc, int i, unsigned int j, char *argv[])
+
+int is_number(char *s)
 {
-	for (i = 1; i <= argc; i++)
-		for (j = 0; argv[i] != '\0' && j < strlen(argv[i]); j++)
-			if (isdigit(argv[i][j]) == 0)
-				return (1);
-	return (0);
+	int i;
+
+	i = 0;
+	while (*(s + i) != '\0')
+	{
+		if (*(s + i) >= '0' && *(s + i) <= '9')
+		{
+			i++;
+		}
+		else
+		{
+			return (0);
+		}
+	}
+	return (1);
 }
+
 /**
- * main - adds all arguments together if they are digits.
- * @argc: argument count only accepts ints separated by spaces.
- * @argv: argument vector
- * Return: 0 on success, 1 on failure
+ * main - prints the sum of positive numbers
+ * @argc: number of arguments
+ * @argv: array of arguments
+ * Return: (0)
  */
+
 int main(int argc, char *argv[])
 {
-	int result, i;
+	int i, sum, is_num;
 
-	result = 0;
-	if (checker(argc, 1, 0, argv) == 1)
+	sum = 0;
+	if (argc == 1)
 	{
-		printf("Error\n");
-		return (1);
+		printf("0\n");
 	}
-	for (i = 1; i < argc; i++)
-		result += atoi(argv[i]);
-	printf("%d\n", result);
+	else if (argc > 1)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			is_num = is_number(argv[i]);
+			if (is_num == 1)
+			{
+				sum += atoi(argv[i]);
+			}
+			else
+			{
+				printf("Error\n");
+				return (1);
+			}
+			i++;
+		}
+		printf("%d\n", sum);
+	}
 	return (0);
 }
