@@ -1,58 +1,81 @@
+#include "holberton.h"
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
-#include <string.h>
-/**
- * checker - checks for valid input
- * @argc: argument count
- * @i: counter for argv[]
- * @j: counter for argv[][]
- * @argv: argument vector
- * Return: 0 on success, 1 on failure
- */
-int checker(int argc, int i, unsigned int j, char *argv[])
-{
-	for (i = 1; i <= argc; i++)
-		for (j = 0; argv[i] != '\0' && j < strlen(argv[i]); j++)
-			if (isdigit(argv[i][j]) == 0)
-				return (1);
-	return (0);
-}
-/**
- * main - Prints the minimum number of coins
- * to make change for an amount of cents.
- * @argc: argument count
- * @argv: argument vector
- * Return: 0 on success
- */
-int main(int argc, char *argv[])
-{
-	unsigned int cents;
-	int coins;
 
-	cents = coins = 0;
-	if (argc == 2)
+/**
+ * make_change - finds least number of coins
+ * @n: money amount
+ * Return: number of coins
+ */
+
+int make_change(int n)
+{
+	int coins, quarters, dimes, nickels, twocents, pennies;
+
+	coins = 0;
+	quarters = 0;
+	dimes = 0;
+	nickels = 0;
+	twocents = 0;
+	pennies = 0;
+
+	while (n > 0)
 	{
-		if (argv[1][0] == '-')
-			printf("0\n");
-		if (checker(argc, 1, 0, argv) == 0)
+		if (n >= 25)
 		{
-			cents = atoi(argv[1]);
-			for ( ; cents >= 25; coins++, cents -= 25)
-				;
-			for ( ; cents >= 10; coins++, cents -= 10)
-				;
-			for ( ; cents >= 5; coins++, cents -= 5)
-				;
-			for ( ; cents >= 2; coins++, cents -= 2)
-				;
-			for ( ; cents >= 1; coins++, cents--)
-				;
-			printf("%d\n", coins);
+			n -= 25;
+			quarters += 1;
+		}
+		else if (n >= 10)
+		{
+			n -= 10;
+			dimes += 1;
+		}
+		else if (n >= 5)
+		{
+			n -= 5;
+			nickels += 1;
+		}
+		else if (n >= 2)
+		{
+			n -= 2;
+			twocents += 1;
+		}
+		else
+		{
+			n -= 1;
+			pennies += 1;
 		}
 	}
-	else
-		printf("Error\n");
-	return (0);
+	coins = quarters + dimes + nickels + twocents + pennies;
+
+	return (coins);
 }
 
+/**
+ * main - prints minimum number of coins to make change
+ * @argc: number of arguments
+ * @argv: array of arguments
+ * Return: (0)
+ */
+
+int main(int argc, char *argv[])
+{
+	int coins;
+
+	if (argc != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	else if (atoi(argv[1]) < 0)
+	{
+		printf("0\n");
+	}
+	else
+	{
+		coins = make_change(atoi(argv[1]));
+		printf("%d\n", coins);
+	}
+	return (0);
+}
