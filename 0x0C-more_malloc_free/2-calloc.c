@@ -1,22 +1,28 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
-  * _calloc - allocates memory for an initialized buffer
-  * @nmemb: number of memory bytes
-  * @size: number of data type bits
-  * Return: return pointer to initialized buffer
-  */
+ * _calloc - allocates memory for an array
+ * @nmemb: number of members
+ * @size: number of bytes
+ * Return: pointer to allocated memory corresponding with the string
+ */
+
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *p;
+	void *arr;
 	unsigned int i;
+	char *k;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	p = malloc(size * nmemb);
-	if (p == NULL)
+
+	arr = malloc(size * nmemb);
+	if (arr == NULL)
 		return (NULL);
-	for (i = 0; i < nmemb ; i++)
-		p[i] = 0;
-	return (p);
+
+	k = arr;
+	for (i = 0; i < nmemb * size; i++)
+		k[i] = 0;
+	return (arr);
 }
